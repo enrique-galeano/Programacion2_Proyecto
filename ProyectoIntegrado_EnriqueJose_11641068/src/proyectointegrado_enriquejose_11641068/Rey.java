@@ -31,7 +31,7 @@ public class Rey extends Pieza{
 
     @Override
     public String toString() {
-        return "Rey{" + "color=" + color + '}';
+        return "Ω";
     }
     
     
