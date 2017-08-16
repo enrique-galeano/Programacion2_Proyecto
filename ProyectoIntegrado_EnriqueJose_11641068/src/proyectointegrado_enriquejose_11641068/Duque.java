@@ -27,6 +27,13 @@ public class Duque extends Pieza{
     }
 
     @Override
+    public boolean movimientos(Object[][] matriz, int x, int y, int x1, int y1) {
+      return false;
+    }
+    
+   
+
+    @Override
     public String toString() {
         return "O";
     }

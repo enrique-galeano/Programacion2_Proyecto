@@ -11,7 +11,8 @@ import java.awt.Color;
  *
  * @author enriq
  */
-public class Rebelde extends Pieza{
+public class Rebelde extends Pieza {
+
     private Color color;
 
     public Rebelde() {
@@ -21,7 +22,6 @@ public class Rebelde extends Pieza{
         this.color = color;
     }
 
-    
     public Color getColor() {
         return color;
     }
@@ -31,8 +31,56 @@ public class Rebelde extends Pieza{
     }
 
     @Override
+    public boolean movimientos(Object[][] matriz, int x, int y, int x1, int y1) {
+        if (y == y1) {
+            for (int i = 1; i <= x1 - x; i++) {
+                if (matriz[x + i][y] instanceof Pieza) {
+                    System.out.println("Movimiento invalido");
+                    return false;
+                }
+
+            }
+            if (x1 > x) {
+                for (int i = 1; i <= x1 - x; i++) {
+                    if (matriz[x + i][y] instanceof Pieza) {
+                        System.out.println("Movimiento invalido");
+                        return false;
+                    }
+                }
+            } else {
+                for (int i = 1; i <= x - x1; i++) {
+                    if (matriz[x - i][y] instanceof Pieza) {
+                        System.out.println("Movimiento invalido");
+                        return false;
+                    }
+                }
+            }
+            return true;
+        } else {
+            if (x == x1) {
+                for (int i = 1; i <= y1 - y; i++) {
+                    if (matriz[x][y + i] instanceof Pieza) {
+                        System.out.println("Movimiento invalido");
+                        return false;
+                    }
+                }
+                if (y1 < y) {
+                    for (int i = 1; i <= y - y1; i++) {
+                        if (matriz[x][y - i] instanceof Pieza) {
+                            System.out.println("Movimiento invalido");
+                            return false;
+                        }
+                    }
+                }
+            }
+
+        }
+        return true;
+    }
+
+    @Override
     public String toString() {
         return "•";
     }
-    
+
 }
