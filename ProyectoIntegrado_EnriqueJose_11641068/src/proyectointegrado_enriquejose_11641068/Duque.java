@@ -28,7 +28,7 @@ public class Duque extends Pieza{
 
     @Override
     public String toString() {
-        return "○";
+        return "O";
     }
     
     

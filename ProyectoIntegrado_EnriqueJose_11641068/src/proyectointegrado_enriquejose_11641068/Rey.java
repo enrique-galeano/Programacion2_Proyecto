@@ -5,10 +5,36 @@
  */
 package proyectointegrado_enriquejose_11641068;
 
+import java.awt.Color;
+
 /**
  *
  * @author enriq
  */
 public class Rey extends Pieza{
+    public Color color;
+
+    public Rey() {
+    }
+
+    public Rey(Color color) {
+        this.color = color;
+    }
+
+    public Color getColor() {
+        return color;
+    }
+
+    public void setColor(Color color) {
+        this.color = color;
+    }
+
+    @Override
+    public String toString() {
+        return "Rey{" + "color=" + color + '}';
+    }
+    
+    
+    
     
 }
