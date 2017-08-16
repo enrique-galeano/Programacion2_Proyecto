@@ -17,21 +17,35 @@ public class ProyectoIntegrado_EnriqueJose_11641068 {
     public static void main(String[] args) {
         int x = 0, cont = 0, ayuda = 0, y = 0;
         int x1 = 0, y1 = 0;
+        int x2 = 0, y2 = 0;
         Pieza pieza = new Pieza();
         Object[][] matrix = new Object[19][19];
         matrix = Tablero();
         //imprimirmatriz(matrix, 0, 0);
+        System.out.println("Bienvenido al Jugo de Mesa Alea Evangelii\n"
+                + "Reglas del juego\n"
+                + "1) NO se puede pasar por ensima de un aliado\n"
+                + "2) Solo el Rey puede ocupar el castillo X \n"
+                + "3) Los cuatro duques que estan al rededor del Rey son imunes");
+        System.out.println("Ingrese su nombre Jugador 1 ");
+        String jugador1 = sc.next();
+        System.out.println("Ingrese su nombre Jugador 2");
+        String jugador2 = sc.next();
         while (ayuda != 1) {
-            imprimirmatriz(matrix, 0, 0);
+            //imprimirmatriz(matrix, 0, 0);
             System.out.println("  ");
-            System.out.println("Ingrese la coordenada de x: ");
-            x = sc.nextInt();
-            System.out.println("Ingrese la coordenada de y: ");
-            y = sc.nextInt();
-            if (matrix[x][y] instanceof Pieza) {
-                if (matrix[x][y] instanceof Rebelde) {
-                    System.out.println("Usted esta a punto de mover un Relbe");
-                    if (cont % 2 == 0) {
+
+            if (cont % 2 == 0) {
+                imprimirmatriz(matrix, 0, 0);
+                System.out.println(" ");
+                System.out.println("Jugador 1 " + jugador1);
+                System.out.println("Ingrese la coordenada de x: ");
+                x = sc.nextInt();
+                System.out.println("Ingrese la coordenada de y: ");
+                y = sc.nextInt();
+                if (matrix[x][y] instanceof Pieza) {
+                    if (matrix[x][y] instanceof Rebelde) {
+                        System.out.println("Usted movera un Relbe");
                         System.out.println("Ingrese donde quiere mover en x ");
                         x1 = sc.nextInt();
                         System.out.println("Ingrese donde quiere mover en y ");
@@ -43,9 +57,32 @@ public class ProyectoIntegrado_EnriqueJose_11641068 {
                         }
                     }
                 }
+                cont++;
             }
+            System.out.println(" ");
             if (cont % 2 != 0) {
-
+                imprimirmatriz(matrix, 0, 0);
+                System.out.println("Jugador 2 " + jugador2);
+                System.out.println("Ingrese la coordenada de x: ");
+                x = sc.nextInt();
+                System.out.println("Ingrese la coordenada de y: ");
+                y = sc.nextInt();
+                System.out.println("Jugador 2 ");
+                if (matrix[x][y] instanceof Pieza) {
+                    if (matrix[x][y] instanceof Duque) {
+                        System.out.println("Usted movera un Duque");
+                        System.out.println("Ingrese donde quiere mover en x ");
+                        x2 = sc.nextInt();
+                        System.out.println("Ingrese donde quiere mover en y ");
+                        y2 = sc.nextInt();
+                        pieza = (Pieza) matrix[x][y];
+                        if (pieza.movimientos(matrix, x, y, x2, y2)) {
+                            matrix[x2][y2] = matrix[x][y];
+                            matrix[x][y] = " ";
+                        }
+                    }
+                }
+                cont++;
             }
         }
     }
