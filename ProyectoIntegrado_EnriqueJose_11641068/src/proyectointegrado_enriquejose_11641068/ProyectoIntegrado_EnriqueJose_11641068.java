@@ -33,11 +33,11 @@ public class ProyectoIntegrado_EnriqueJose_11641068 {
         System.out.println("Ingrese su nombre Jugador 2");
         String jugador2 = sc.next();
         while (ayuda != 1) {
-            System.out.println("  0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19");
-           imprimirmatriz(matrix, 0, 0);
+            System.out.println("   0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19");
+            imprimirmatriz(matrix, 0, 0);
             System.out.println("  ");
             if (cont % 2 == 0) {
-                
+
                 System.out.println(" ");
                 System.out.println(jugador1 + " eres del bando de los Rebeldes");
                 System.out.println("Ingrese la coordenada de x: ");
@@ -120,8 +120,8 @@ public class ProyectoIntegrado_EnriqueJose_11641068 {
 
     public static Object[][] Tablero() {
         Object matriz[][] = {
-            {"X", "X", new Rebelde(Color.BLACK), " ", " ", new Rebelde(Color.BLACK), " ", " ", " ", " ", " ", " ", " ", new Rebelde(Color.BLACK), " ", " ", new Rebelde(Color.BLACK), "X", "X"},
-            {"X", "X", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "X", "X"},
+            {new Castillo(Color.GRAY), new Castillo(Color.GRAY), new Rebelde(Color.BLACK), " ", " ", new Rebelde(Color.BLACK), " ", " ", " ", " ", " ", " ", " ", new Rebelde(Color.BLACK), " ", " ", new Rebelde(Color.BLACK), new Castillo(Color.GRAY), new Castillo(Color.GRAY)},
+            {new Castillo(Color.GRAY), new Castillo(Color.GRAY), " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", new Castillo(Color.GRAY), new Castillo(Color.GRAY)},
             {new Rebelde(Color.BLACK), " ", " ", " ", " ", new Rebelde(Color.BLACK), " ", " ", " ", " ", " ", " ", " ", new Rebelde(Color.BLACK), " ", " ", " ", " ", new Rebelde(Color.BLACK)},
             {" ", " ", " ", " ", " ", " ", " ", new Rebelde(Color.BLACK), " ", new Rebelde(Color.BLACK), " ", new Rebelde(Color.BLACK), " ", " ", " ", " ", " ", " ", " "},
             {" ", " ", " ", " ", " ", " ", new Rebelde(Color.BLACK), " ", new Duque(Color.WHITE), " ", new Duque(Color.WHITE), " ", new Rebelde(Color.BLACK), " ", " ", " ", " ", " ", " "},
@@ -137,8 +137,8 @@ public class ProyectoIntegrado_EnriqueJose_11641068 {
             {" ", " ", " ", " ", " ", " ", new Rebelde(Color.BLACK), " ", new Duque(Color.WHITE), " ", new Duque(Color.WHITE), " ", new Rebelde(Color.BLACK), " ", " ", " ", " ", " ", " "},
             {" ", " ", " ", " ", " ", " ", " ", new Rebelde(Color.BLACK), " ", new Rebelde(Color.BLACK), " ", new Rebelde(Color.BLACK), " ", " ", " ", " ", " ", " ", " "},
             {new Rebelde(Color.BLACK), " ", " ", " ", " ", new Rebelde(Color.BLACK), " ", " ", " ", " ", " ", " ", " ", new Rebelde(Color.BLACK), " ", " ", " ", " ", new Rebelde(Color.BLACK)},
-            {"X", "X", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "X", "X"},
-            {"X", "X", new Rebelde(Color.BLACK), " ", " ", new Rebelde(Color.BLACK), " ", " ", " ", " ", " ", " ", " ", new Rebelde(Color.BLACK), " ", " ", new Rebelde(Color.BLACK), "X", "X"}};
+            {new Castillo(Color.GRAY), new Castillo(Color.GRAY), " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", new Castillo(Color.GRAY), new Castillo(Color.GRAY)},
+            {new Castillo(Color.GRAY), new Castillo(Color.GRAY), new Rebelde(Color.BLACK), " ", " ", new Rebelde(Color.BLACK), " ", " ", " ", " ", " ", " ", " ", new Rebelde(Color.BLACK), " ", " ", new Rebelde(Color.BLACK), new Castillo(Color.GRAY), new Castillo(Color.GRAY)}};
         return matriz;
     }
 
@@ -149,15 +149,15 @@ public class ProyectoIntegrado_EnriqueJose_11641068 {
             if (colum == matriz[0].length - 1) {
                 System.out.println("[" + matriz[filas][colum] + "]");
                 imprimirmatriz(matriz, filas + 1, 0);
-            } else  {
+            } else {
                 if (colum == 0) {
-                    if (filas <=9 ) {
-                        System.out.print(" "+ filas );
-                    }else{
-                        
+                    if (filas <= 9) {
+                        System.out.print(" " + filas);
+                    } else {
+
                         System.out.print(filas);
                     }
-                    
+
                 }
                 System.out.print("[" + matriz[filas][colum] + "]");
                 imprimirmatriz(matriz, filas, colum + 1);
