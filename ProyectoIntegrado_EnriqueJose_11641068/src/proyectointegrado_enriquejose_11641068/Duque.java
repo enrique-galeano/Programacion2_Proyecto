@@ -73,7 +73,14 @@ public class Duque extends Pieza{
         }
         return true;
     }
-    
+    @Override
+    public boolean capturar(Object[][] matriz, int x, int y){
+        if (matriz[x][y+1] instanceof Rebelde&& matriz[x][y-1] instanceof Rebelde) {
+            return true;
+            
+        }
+        return false;   
+    }
    
 
     @Override

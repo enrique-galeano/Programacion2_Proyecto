@@ -15,7 +15,7 @@ public class Pieza implements complementos {
     }
 
     @Override
-    public boolean capturar(Object[][] matriz, int x, int y, int x1, int y1) {
+    public boolean capturar(Object[][] matriz, int x, int y) {
        return false;
     }
 

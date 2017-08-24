@@ -21,6 +21,7 @@ public class ProyectoIntegrado_EnriqueJose_11641068 {
         int x3 = 0, y3 = 0;
         Pieza pieza = new Pieza();
         Object[][] matrix = new Object[19][19];
+
         matrix = Tablero();
         //imprimirmatriz(matrix, 0, 0);
         System.out.println("Bienvenido al Jugo de Mesa Alea Evangelii\n"
@@ -37,7 +38,6 @@ public class ProyectoIntegrado_EnriqueJose_11641068 {
             imprimirmatriz(matrix, 0, 0);
             System.out.println("  ");
             if (cont % 2 == 0) {
-
                 System.out.println(" ");
                 System.out.println(jugador1 + " eres del bando de los Rebeldes");
                 System.out.println("Ingrese la coordenada de x: ");
@@ -58,62 +58,58 @@ public class ProyectoIntegrado_EnriqueJose_11641068 {
                         }
                     }
                 }
+                for (int i = 0; i < matrix.length; i++) {
+                    for (int j = 0; j < matrix[0].length; j++) {
+                        if (matrix[i][j] instanceof Duque) {
+                            if (((Duque) matrix[i][j]).capturar(matrix, i, j)) {
+                                matrix[i][j] = " ";
+                            }
+                        }
+
+                    }
+                }
                 cont++;
             }
             System.out.println(" ");
             if (cont % 2 != 0) {
+                System.out.println("   0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19");
                 imprimirmatriz(matrix, 0, 0);
                 System.out.println(" ");
                 String nombre;
                 System.out.println("Jugador 2 " + jugador2);
-                System.out.println("Quiere mover a un Duque a al rey");
-                System.out.println("Ingrese el nombre del");
-                nombre = sc.next();
-                switch (nombre) {
-                    case "duque":
-                        System.out.println("Ingrese la coordenada de x: ");
-                        x = sc.nextInt();
-                        System.out.println("Ingrese la coordenada de y: ");
-                        y = sc.nextInt();
-                        System.out.println(jugador2 + " eres del bando de los Duques");
-                        if (matrix[x][y] instanceof Pieza) {
-                            if (matrix[x][y] instanceof Duque) {
-                                System.out.println("Usted movera un Duque");
-                                System.out.println("Ingrese donde quiere mover en x ");
-                                x2 = sc.nextInt();
-                                System.out.println("Ingrese donde quiere mover en y ");
-                                y2 = sc.nextInt();
-                                pieza = (Pieza) matrix[x][y];
-                                if (pieza.movimientos(matrix, x, y, x2, y2)) {
-                                    matrix[x2][y2] = matrix[x][y];
-                                    matrix[x][y] = " ";
-                                }
-                            }
+                System.out.println("Ingrese la coordenada de x: ");
+                x = sc.nextInt();
+                System.out.println("Ingrese la coordenada de y: ");
+                y = sc.nextInt();
+                System.out.println(jugador2 + " eres del bando de los Duques");
+                if (matrix[x][y] instanceof Pieza) {
+                    if (matrix[x][y] instanceof Duque) {
+                        System.out.println("Usted movera un Duque");
+                        System.out.println("Ingrese donde quiere mover en x ");
+                        x2 = sc.nextInt();
+                        System.out.println("Ingrese donde quiere mover en y ");
+                        y2 = sc.nextInt();
+                        pieza = (Pieza) matrix[x][y];
+                        if (pieza.movimientos(matrix, x, y, x2, y2)) {
+                            matrix[x2][y2] = matrix[x][y];
+                            matrix[x][y] = " ";
                         }
-                        cont++;
-                        break;
-                    case "rey":
-                        System.out.println("Ingrese la coordenada de x: ");
-                        x = sc.nextInt();
-                        System.out.println("Ingrese la coordenada de y: ");
-                        y = sc.nextInt();
-                        if (matrix[x][y] instanceof Pieza) {
-                            if (matrix[x][y] instanceof Rey) {
-                                System.out.println("Usted movera al rey");
-                                System.out.println("Ingrese donde quiere moverlo en x ");
-                                x3 = sc.nextInt();
-                                System.out.println("Ingrese donde quiere moverlo en y ");
-                                y3 = sc.nextInt();
-                                pieza = (Pieza) matrix[x][y];
-                                if (pieza.movimientos(matrix, x, y, x3, y3)) {
-                                    matrix[x3][y3] = matrix[x][y];
-                                    matrix[x][y] = " ";
-                                }
-                            }
+
+                    } else if (matrix[x][y] instanceof Rey) {
+                        System.out.println("Usted movera un Duque");
+                        System.out.println("Ingrese donde quiere mover en x ");
+                        x2 = sc.nextInt();
+                        System.out.println("Ingrese donde quiere mover en y ");
+                        y2 = sc.nextInt();
+                        pieza = (Pieza) matrix[x][y];
+                        if (pieza.movimientos(matrix, x, y, x2, y2)) {
+                            matrix[x2][y2] = matrix[x][y];
+                            matrix[x][y] = " ";
                         }
-                        break;
+                    }
                 }
                 cont++;
+
             }
         }
     }
