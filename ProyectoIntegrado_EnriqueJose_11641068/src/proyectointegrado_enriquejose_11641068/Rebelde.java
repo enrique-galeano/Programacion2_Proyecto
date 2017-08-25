@@ -56,26 +56,39 @@ public class Rebelde extends Pieza {
                 }
             }
             return true;
-        } else {
-            if (x == x1) {
-                for (int i = 1; i <= y1 - y; i++) {
-                    if (matriz[x][y + i] instanceof Pieza) {
+        } else if (x == x1) {
+            for (int i = 1; i <= y1 - y; i++) {
+                if (matriz[x][y + i] instanceof Pieza) {
+                    System.out.println("Movimiento no permitido por las Reglas del Juego");
+                    return false;
+                }
+            }
+            if (y1 < y) {
+                for (int i = 1; i <= y - y1; i++) {
+                    if (matriz[x][y - i] instanceof Pieza) {
                         System.out.println("Movimiento no permitido por las Reglas del Juego");
                         return false;
                     }
                 }
-                if (y1 < y) {
-                    for (int i = 1; i <= y - y1; i++) {
-                        if (matriz[x][y - i] instanceof Pieza) {
-                            System.out.println("Movimiento no permitido por las Reglas del Juego");
-                            return false;
-                        }
-                    }
-                }
             }
+            return true;
+        } else {
+            System.out.println("Movimiento invalido no es permitido moverse en diagonal");
+            return false;
 
         }
-        return true;
+    }
+
+    @Override
+    public boolean capturar(Object[][] matriz, int x, int y) {
+        if (matriz[x][y + 1] instanceof Rebelde && matriz[x][y - 1] instanceof Rebelde) {
+            return true;
+        } else if (matriz[x][y] instanceof Rebelde && matriz[x][y + 1] instanceof Rebelde && matriz[x + 1][y] instanceof Rebelde) {
+            return true;
+        } else if (matriz[x][y] instanceof Duque && matriz[x][y + 1] instanceof Duque && matriz[x + 1][y] instanceof Duque) {
+            return true;
+        }
+        return false;
     }
 
     @Override

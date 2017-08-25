@@ -77,7 +77,8 @@ public class Rey extends Pieza {
         }
         return true;
     }
-
+ 
+  
     @Override
     public String toString() {
         return "£";

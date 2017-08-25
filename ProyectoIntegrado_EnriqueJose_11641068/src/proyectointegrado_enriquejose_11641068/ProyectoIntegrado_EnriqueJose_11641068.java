@@ -40,16 +40,16 @@ public class ProyectoIntegrado_EnriqueJose_11641068 {
             if (cont % 2 == 0) {
                 System.out.println(" ");
                 System.out.println(jugador1 + " eres del bando de los Rebeldes");
-                System.out.println("Ingrese la coordenada de x: ");
+                System.out.println("Ingrese la coordenada de ");
                 x = sc.nextInt();
-                System.out.println("Ingrese la coordenada de y: ");
+                System.out.println("Ingrese la coordenada de ");
                 y = sc.nextInt();
                 if (matrix[x][y] instanceof Pieza) {
                     if (matrix[x][y] instanceof Rebelde) {
                         System.out.println("Usted movera un Relbe");
-                        System.out.println("Ingrese donde quiere mover en x ");
+                        System.out.println("Ingrese donde quiere mover en ");
                         x1 = sc.nextInt();
-                        System.out.println("Ingrese donde quiere mover en y ");
+                        System.out.println("Ingrese donde quiere mover en ");
                         y1 = sc.nextInt();
                         pieza = (Pieza) matrix[x][y];
                         if (pieza.movimientos(matrix, x, y, x1, y1)) {
@@ -59,15 +59,23 @@ public class ProyectoIntegrado_EnriqueJose_11641068 {
                     }
                 }
                 for (int i = 0; i < matrix.length; i++) {
-                    for (int j = 0; j < matrix[0].length; j++) {
+                    for (int j = 0; j < matrix[i].length; j++) {
                         if (matrix[i][j] instanceof Duque) {
                             if (((Duque) matrix[i][j]).capturar(matrix, i, j)) {
                                 matrix[i][j] = " ";
                             }
                         }
-
                     }
                 }
+                /*for (int i = 0; i < matrix.length; i++) {
+                    for (int j = 0; j < matrix[0].length; j++) {
+                        if (matrix[i][j] instanceof Rey) {
+                            if (((Rey) matrix[i][j]).capturar(matrix, i, j)) {
+                                matrix[i][j] = " ";
+                            }
+                        }
+                    }
+                }*/
                 cont++;
             }
             System.out.println(" ");
@@ -107,12 +115,21 @@ public class ProyectoIntegrado_EnriqueJose_11641068 {
                             matrix[x][y] = " ";
                         }
                     }
+                    for (int i = 0; i < matrix.length; i++) {
+                        for (int j = 0; j < matrix[i].length; j++) {
+                            if (matrix[i][j] instanceof Rebelde) {
+                                if (((Rebelde) matrix[i][j]).capturar(matrix, i, j)) {
+                                    matrix[i][j] = " ";
+                                }
+                            }
+                        }
+                    }
+                    cont++;
                 }
-                cont++;
-
             }
         }
-    }
+
+    }    
 
     public static Object[][] Tablero() {
         Object matriz[][] = {
@@ -153,7 +170,6 @@ public class ProyectoIntegrado_EnriqueJose_11641068 {
 
                         System.out.print(filas);
                     }
-
                 }
                 System.out.print("[" + matriz[filas][colum] + "]");
                 imprimirmatriz(matriz, filas, colum + 1);
