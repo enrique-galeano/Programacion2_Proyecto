@@ -13,6 +13,8 @@ public class ProyectoIntegrado_EnriqueJose_11641068 {
      * @param args the command line arguments
      */
     static Scanner sc = new Scanner(System.in);
+    int duqs = 24;
+    int rebel = 48;
 
     public static void main(String[] args) {
         int x = 0, cont = 0, ayuda = 0, y = 0;
@@ -34,12 +36,12 @@ public class ProyectoIntegrado_EnriqueJose_11641068 {
         System.out.println("Ingrese su nombre Jugador 2");
         String jugador2 = sc.next();
         while (ayuda != 1) {
-            System.out.println("   0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19");
+            System.out.println("   0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18");
             imprimirmatriz(matrix, 0, 0);
             System.out.println("  ");
             if (cont % 2 == 0) {
                 System.out.println(" ");
-                System.out.println(jugador1 + " eres del bando de los Rebeldes");
+                System.out.println("Jugador 1 "+ jugador1 + " tu estas con los rebeldes");
                 System.out.println("Ingrese la coordenada de ");
                 x = sc.nextInt();
                 System.out.println("Ingrese la coordenada de ");
@@ -67,7 +69,7 @@ public class ProyectoIntegrado_EnriqueJose_11641068 {
                         }
                     }
                 }
-                /*for (int i = 0; i < matrix.length; i++) {
+                for (int i = 0; i < matrix.length; i++) {
                     for (int j = 0; j < matrix[0].length; j++) {
                         if (matrix[i][j] instanceof Rey) {
                             if (((Rey) matrix[i][j]).capturar(matrix, i, j)) {
@@ -75,21 +77,20 @@ public class ProyectoIntegrado_EnriqueJose_11641068 {
                             }
                         }
                     }
-                }*/
+                }
                 cont++;
             }
             System.out.println(" ");
             if (cont % 2 != 0) {
-                System.out.println("   0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19");
+                System.out.println("   0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18");
                 imprimirmatriz(matrix, 0, 0);
                 System.out.println(" ");
                 String nombre;
-                System.out.println("Jugador 2 " + jugador2);
+                System.out.println("Jugador 2 " + jugador2+  "tu estas con el Rey y los duques  ");
                 System.out.println("Ingrese la coordenada de x: ");
                 x = sc.nextInt();
                 System.out.println("Ingrese la coordenada de y: ");
                 y = sc.nextInt();
-                System.out.println(jugador2 + " eres del bando de los Duques");
                 if (matrix[x][y] instanceof Pieza) {
                     if (matrix[x][y] instanceof Duque) {
                         System.out.println("Usted movera un Duque");
@@ -103,8 +104,9 @@ public class ProyectoIntegrado_EnriqueJose_11641068 {
                             matrix[x][y] = " ";
                         }
 
-                    } else if (matrix[x][y] instanceof Rey) {
-                        System.out.println("Usted movera un Duque");
+                    } 
+                    if (matrix[x][y] instanceof Rey) {
+                        System.out.println("Usted movera al Rey");
                         System.out.println("Ingrese donde quiere mover en x ");
                         x2 = sc.nextInt();
                         System.out.println("Ingrese donde quiere mover en y ");
@@ -129,7 +131,7 @@ public class ProyectoIntegrado_EnriqueJose_11641068 {
             }
         }
 
-    }    
+    }
 
     public static Object[][] Tablero() {
         Object matriz[][] = {
