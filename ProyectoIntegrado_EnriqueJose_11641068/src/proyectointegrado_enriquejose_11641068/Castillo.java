@@ -13,6 +13,10 @@ import java.awt.Color;
  */
 public class Castillo extends Pieza{
     private Color c;
+    private boolean gana;
+
+    public Castillo() {
+    }
 
     public Castillo(Color c) {
         this.c = c;
@@ -25,6 +29,16 @@ public class Castillo extends Pieza{
     public void setC(Color c) {
         this.c = c;
     }
+
+    public boolean isGana() {
+        return gana;
+    }
+
+    public void setGana(boolean gana) {
+        this.gana = gana;
+    }
+
+ 
 
     @Override
     public String toString() {

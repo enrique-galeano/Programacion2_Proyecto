@@ -13,8 +13,8 @@ public class ProyectoIntegrado_EnriqueJose_11641068 {
      * @param args the command line arguments
      */
     static Scanner sc = new Scanner(System.in);
-    int duqs = 24;
-    int rebel = 48;
+    static int duqs = 24;
+    static int rebel = 48;
 
     public static void main(String[] args) {
         int x = 0, cont = 0, ayuda = 0, y = 0;
@@ -22,7 +22,7 @@ public class ProyectoIntegrado_EnriqueJose_11641068 {
         int x2 = 0, y2 = 0;
         int x3 = 0, y3 = 0;
         Pieza pieza = new Pieza();
-        Object[][] matrix = new Object[19][19];
+        Object[][] matrix = new Object[6][3];
 
         matrix = Tablero();
         //imprimirmatriz(matrix, 0, 0);
@@ -65,6 +65,7 @@ public class ProyectoIntegrado_EnriqueJose_11641068 {
                         if (matrix[i][j] instanceof Duque) {
                             if (((Duque) matrix[i][j]).capturar(matrix, i, j)) {
                                 matrix[i][j] = " ";
+                                duqs--;
                             }
                         }
                     }
@@ -77,6 +78,11 @@ public class ProyectoIntegrado_EnriqueJose_11641068 {
                             }
                         }
                     }
+                }
+                System.out.println("Le quedan " + duqs + " de los 24 duques ");
+                if (duqs == 0) {
+                    System.out.println("Ganaron los Rebeldes");
+                    break;
                 }
                 cont++;
             }
@@ -122,9 +128,15 @@ public class ProyectoIntegrado_EnriqueJose_11641068 {
                             if (matrix[i][j] instanceof Rebelde) {
                                 if (((Rebelde) matrix[i][j]).capturar(matrix, i, j)) {
                                     matrix[i][j] = " ";
+                                    rebel--;
                                 }
                             }
                         }
+                    }
+                    System.out.println("Le quedan " + rebel + "de los 48 rebeldes");
+                    if (rebel == 0) {
+                        System.out.println("Gano el Rey y los duques");
+                        break;
                     }
                     cont++;
                 }
@@ -134,8 +146,7 @@ public class ProyectoIntegrado_EnriqueJose_11641068 {
     }
 
     public static Object[][] Tablero() {
-        Object matriz[][] = {
-            {new Castillo(Color.GRAY), new Castillo(Color.GRAY), new Rebelde(Color.BLACK), " ", " ", new Rebelde(Color.BLACK), " ", " ", " ", " ", " ", " ", " ", new Rebelde(Color.BLACK), " ", " ", new Rebelde(Color.BLACK), new Castillo(Color.GRAY), new Castillo(Color.GRAY)},
+        Object matriz[][] ={{new Castillo(Color.GRAY), new Castillo(Color.GRAY), new Rebelde(Color.BLACK), " ", " ", new Rebelde(Color.BLACK), " ", " ", " ", " ", " ", " ", " ", new Rebelde(Color.BLACK), " ", " ", new Rebelde(Color.BLACK), new Castillo(Color.GRAY), new Castillo(Color.GRAY)},
             {new Castillo(Color.GRAY), new Castillo(Color.GRAY), " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", new Castillo(Color.GRAY), new Castillo(Color.GRAY)},
             {new Rebelde(Color.BLACK), " ", " ", " ", " ", new Rebelde(Color.BLACK), " ", " ", " ", " ", " ", " ", " ", new Rebelde(Color.BLACK), " ", " ", " ", " ", new Rebelde(Color.BLACK)},
             {" ", " ", " ", " ", " ", " ", " ", new Rebelde(Color.BLACK), " ", new Rebelde(Color.BLACK), " ", new Rebelde(Color.BLACK), " ", " ", " ", " ", " ", " ", " "},
@@ -178,4 +189,10 @@ public class ProyectoIntegrado_EnriqueJose_11641068 {
             }
         }
     }
+    /*public boolean ganar(Object Castillo, Object Rey){
+        if (Castillo.equals(Rey)) {
+            return true;
+        }else{
+            return false;
+        }*/
 }
