@@ -17,15 +17,13 @@ public class ProyectoIntegrado_EnriqueJose_11641068 {
     static int rebel = 48;
 
     public static void main(String[] args) {
-        int x = 0, cont = 0, ayuda = 0, y = 0;
+        int x = 0, cont = 0, ayuda = 0, y = 0, ayuda2 = 0;
         int x1 = 0, y1 = 0;
         int x2 = 0, y2 = 0;
         int x3 = 0, y3 = 0;
         Pieza pieza = new Pieza();
         Object[][] matrix = new Object[6][3];
-
         matrix = Tablero();
-        //imprimirmatriz(matrix, 0, 0);
         System.out.println("Bienvenido al Jugo de Mesa Alea Evangelii\n"
                 + "Reglas del juego\n"
                 + "1) NO se puede pasar por ensima de un aliado\n"
@@ -41,7 +39,7 @@ public class ProyectoIntegrado_EnriqueJose_11641068 {
             System.out.println("  ");
             if (cont % 2 == 0) {
                 System.out.println(" ");
-                System.out.println("Jugador 1 "+ jugador1 + " tu estas con los rebeldes");
+                System.out.println("Jugador 1 " + jugador1 + " tu estas con los rebeldes");
                 System.out.println("Ingrese la coordenada de ");
                 x = sc.nextInt();
                 System.out.println("Ingrese la coordenada de ");
@@ -74,15 +72,13 @@ public class ProyectoIntegrado_EnriqueJose_11641068 {
                     for (int j = 0; j < matrix[0].length; j++) {
                         if (matrix[i][j] instanceof Rey) {
                             if (((Rey) matrix[i][j]).capturar(matrix, i, j)) {
+                                ayuda = 1;
+                                System.out.println("Ganaron los Rebeldes");
                                 matrix[i][j] = " ";
+                                //System.out.println("Ganaron los Rebeldes");
                             }
                         }
                     }
-                }
-                System.out.println("Le quedan " + duqs + " de los 24 duques ");
-                if (duqs == 0) {
-                    System.out.println("Ganaron los Rebeldes");
-                    break;
                 }
                 cont++;
             }
@@ -92,7 +88,7 @@ public class ProyectoIntegrado_EnriqueJose_11641068 {
                 imprimirmatriz(matrix, 0, 0);
                 System.out.println(" ");
                 String nombre;
-                System.out.println("Jugador 2 " + jugador2+  "tu estas con el Rey y los duques  ");
+                System.out.println("Jugador 2 " + jugador2 + "tu estas con el Rey y los duques  ");
                 System.out.println("Ingrese la coordenada de x: ");
                 x = sc.nextInt();
                 System.out.println("Ingrese la coordenada de y: ");
@@ -110,7 +106,7 @@ public class ProyectoIntegrado_EnriqueJose_11641068 {
                             matrix[x][y] = " ";
                         }
 
-                    } 
+                    }
                     if (matrix[x][y] instanceof Rey) {
                         System.out.println("Usted movera al Rey");
                         System.out.println("Ingrese donde quiere mover en x ");
@@ -118,16 +114,14 @@ public class ProyectoIntegrado_EnriqueJose_11641068 {
                         System.out.println("Ingrese donde quiere mover en y ");
                         y2 = sc.nextInt();
                         pieza = (Pieza) matrix[x][y];
-                        if (pieza.movimientos(matrix, x, y, x2, y2)) {
-                            if (matrix[x2][y2] instanceof Castillo) {
-                                System.out.println("El Rey llego al castillo");
-                                System.out.println("Ganoron los Reyes y Duques");
-                                ayuda = 1;
-                                
-                            }
+                        if (matrix[x2][y2] instanceof Castillo) {
+                            System.out.println("El Rey llego al castillo");
+                            System.out.println("Ganoron los Reyes y Duques");
+                            ayuda = 1;
+                        } else if (pieza.movimientos(matrix, x, y, x2, y2)) {
                             matrix[x2][y2] = matrix[x][y];
                             matrix[x][y] = " ";
-                            
+
                         }
                     }
                     for (int i = 0; i < matrix.length; i++) {
@@ -149,29 +143,28 @@ public class ProyectoIntegrado_EnriqueJose_11641068 {
                 }
             }
         }
-
     }
 
     public static Object[][] Tablero() {
-        Object matriz[][] ={{new Castillo(Color.GRAY), new Castillo(Color.GRAY), new Rebelde(Color.BLACK), " ", " ", new Rebelde(Color.BLACK), " ", " ", " ", " ", " ", " ", " ", new Rebelde(Color.BLACK), " ", " ", new Rebelde(Color.BLACK), new Castillo(Color.GRAY), new Castillo(Color.GRAY)},
-            {new Castillo(Color.GRAY), new Castillo(Color.GRAY), " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", new Castillo(Color.GRAY), new Castillo(Color.GRAY)},
-            {new Rebelde(Color.BLACK), " ", " ", " ", " ", new Rebelde(Color.BLACK), " ", " ", " ", " ", " ", " ", " ", new Rebelde(Color.BLACK), " ", " ", " ", " ", new Rebelde(Color.BLACK)},
-            {" ", " ", " ", " ", " ", " ", " ", new Rebelde(Color.BLACK), " ", new Rebelde(Color.BLACK), " ", new Rebelde(Color.BLACK), " ", " ", " ", " ", " ", " ", " "},
-            {" ", " ", " ", " ", " ", " ", new Rebelde(Color.BLACK), " ", new Duque(Color.WHITE), " ", new Duque(Color.WHITE), " ", new Rebelde(Color.BLACK), " ", " ", " ", " ", " ", " "},
-            {new Rebelde(Color.BLACK), " ", new Rebelde(Color.BLACK), " ", " ", new Rebelde(Color.BLACK), " ", " ", " ", " ", " ", " ", " ", new Rebelde(Color.BLACK), " ", " ", new Rebelde(Color.BLACK), " ", new Rebelde(Color.BLACK)},
-            {" ", " ", " ", " ", new Rebelde(Color.BLACK), " ", " ", " ", " ", new Duque(Color.WHITE), " ", " ", " ", " ", new Rebelde(Color.BLACK), " ", " ", " ", " "},
-            {" ", " ", " ", new Rebelde(Color.BLACK), " ", " ", " ", " ", new Duque(Color.WHITE), " ", new Duque(Color.WHITE), " ", " ", " ", " ", new Rebelde(Color.BLACK), " ", " ", " "},
-            {" ", " ", " ", " ", new Duque(Color.WHITE), " ", " ", new Duque(Color.WHITE), " ", new Duque(Color.WHITE), " ", new Duque(Color.WHITE), " ", " ", new Duque(Color.WHITE), " ", " ", " ", " "},
-            {" ", " ", " ", new Rebelde(Color.BLACK), " ", " ", new Duque(Color.WHITE), " ", new Duque(Color.WHITE), new Rey(Color.BLUE), new Duque(Color.WHITE), " ", new Duque(Color.WHITE), " ", " ", new Rebelde(Color.BLACK), " ", " ", " "},//Centro
-            {" ", " ", " ", " ", new Duque(Color.WHITE), " ", " ", new Duque(Color.WHITE), " ", new Duque(Color.WHITE), " ", new Duque(Color.WHITE), " ", " ", new Duque(Color.WHITE), " ", " ", " ", " "},
-            {" ", " ", " ", new Rebelde(Color.BLACK), " ", " ", " ", " ", new Duque(Color.WHITE), " ", new Duque(Color.WHITE), " ", " ", " ", " ", new Rebelde(Color.BLACK), " ", " ", " "},
-            {" ", " ", " ", " ", new Rebelde(Color.BLACK), " ", " ", " ", " ", new Duque(Color.WHITE), " ", " ", " ", " ", new Rebelde(Color.BLACK), " ", " ", " ", " "},
-            {new Rebelde(Color.BLACK), " ", new Rebelde(Color.BLACK), " ", " ", new Rebelde(Color.BLACK), " ", " ", " ", " ", " ", " ", " ", new Rebelde(Color.BLACK), " ", " ", new Rebelde(Color.BLACK), " ", new Rebelde(Color.BLACK)},
-            {" ", " ", " ", " ", " ", " ", new Rebelde(Color.BLACK), " ", new Duque(Color.WHITE), " ", new Duque(Color.WHITE), " ", new Rebelde(Color.BLACK), " ", " ", " ", " ", " ", " "},
-            {" ", " ", " ", " ", " ", " ", " ", new Rebelde(Color.BLACK), " ", new Rebelde(Color.BLACK), " ", new Rebelde(Color.BLACK), " ", " ", " ", " ", " ", " ", " "},
-            {new Rebelde(Color.BLACK), " ", " ", " ", " ", new Rebelde(Color.BLACK), " ", " ", " ", " ", " ", " ", " ", new Rebelde(Color.BLACK), " ", " ", " ", " ", new Rebelde(Color.BLACK)},
-            {new Castillo(Color.GRAY), new Castillo(Color.GRAY), " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", new Castillo(Color.GRAY), new Castillo(Color.GRAY)},
-            {new Castillo(Color.GRAY), new Castillo(Color.GRAY), new Rebelde(Color.BLACK), " ", " ", new Rebelde(Color.BLACK), " ", " ", " ", " ", " ", " ", " ", new Rebelde(Color.BLACK), " ", " ", new Rebelde(Color.BLACK), new Castillo(Color.GRAY), new Castillo(Color.GRAY)}};
+        Object matriz[][] = {{new Castillo(Color.GRAY), new Castillo(Color.GRAY), new Rebelde(Color.BLACK), " ", " ", new Rebelde(Color.BLACK), " ", " ", " ", " ", " ", " ", " ", new Rebelde(Color.BLACK), " ", " ", new Rebelde(Color.BLACK), new Castillo(Color.GRAY), new Castillo(Color.GRAY)},
+        {new Castillo(Color.GRAY), new Castillo(Color.GRAY), " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", new Castillo(Color.GRAY), new Castillo(Color.GRAY)},
+        {new Rebelde(Color.BLACK), " ", " ", " ", " ", new Rebelde(Color.BLACK), " ", " ", " ", " ", " ", " ", " ", new Rebelde(Color.BLACK), " ", " ", " ", " ", new Rebelde(Color.BLACK)},
+        {" ", " ", " ", " ", " ", " ", " ", new Rebelde(Color.BLACK), " ", new Rebelde(Color.BLACK), " ", new Rebelde(Color.BLACK), " ", " ", " ", " ", " ", " ", " "},
+        {" ", " ", " ", " ", " ", " ", new Rebelde(Color.BLACK), " ", new Duque(Color.WHITE), " ", new Duque(Color.WHITE), " ", new Rebelde(Color.BLACK), " ", " ", " ", " ", " ", " "},
+        {new Rebelde(Color.BLACK), " ", new Rebelde(Color.BLACK), " ", " ", new Rebelde(Color.BLACK), " ", " ", " ", " ", " ", " ", " ", new Rebelde(Color.BLACK), " ", " ", new Rebelde(Color.BLACK), " ", new Rebelde(Color.BLACK)},
+        {" ", " ", " ", " ", new Rebelde(Color.BLACK), " ", " ", " ", " ", new Duque(Color.WHITE), " ", " ", " ", " ", new Rebelde(Color.BLACK), " ", " ", " ", " "},
+        {" ", " ", " ", new Rebelde(Color.BLACK), " ", " ", " ", " ", new Duque(Color.WHITE), " ", new Duque(Color.WHITE), " ", " ", " ", " ", new Rebelde(Color.BLACK), " ", " ", " "},
+        {" ", " ", " ", " ", new Duque(Color.WHITE), " ", " ", new Duque(Color.WHITE), " ", new Duque(Color.WHITE), " ", new Duque(Color.WHITE), " ", " ", new Duque(Color.WHITE), " ", " ", " ", " "},
+        {" ", " ", " ", new Rebelde(Color.BLACK), " ", " ", new Duque(Color.WHITE), " ", new Duque(Color.WHITE), new Rey(Color.BLUE) , new Duque(Color.WHITE), " ", new Duque(Color.WHITE), " ", " ", new Rebelde(Color.BLACK), " ", " ", " "},//Centro
+        {" "," ", " ", " ", new Duque(Color.WHITE), " ", " ", new Duque(Color.WHITE), " ", new Duque(Color.WHITE), " ", new Duque(Color.WHITE), " ", " ", new Duque(Color.WHITE), " ", " ", " ", " "},
+        {" ", " ", " ", new Rebelde(Color.BLACK), " ", " ", " ", " ", new Duque(Color.WHITE), " ", new Duque(Color.WHITE), " ", " ", " ", " ", new Rebelde(Color.BLACK), " ", " ", " "},
+        {" ", " ", " ", " ", new Rebelde(Color.BLACK), " ", " ", " ", " ", new Duque(Color.WHITE), " ", " ", " ", " ", new Rebelde(Color.BLACK), " ", " ", " ", " "},
+        {new Rebelde(Color.BLACK), " ", new Rebelde(Color.BLACK), " ", " ", new Rebelde(Color.BLACK), " ", " ", " ", " ", " ", " ", " ", new Rebelde(Color.BLACK), " ", " ", new Rebelde(Color.BLACK), " ", new Rebelde(Color.BLACK)},
+        {" ", " ", " ", " ", " ", " ", new Rebelde(Color.BLACK), " ", new Duque(Color.WHITE), " ", new Duque(Color.WHITE), " ", new Rebelde(Color.BLACK), " ", " ", " ", " ", " ", " "},
+        {" ", " ", " ", " ", " ", " ", " ", new Rebelde(Color.BLACK), " ", new Rebelde(Color.BLACK), " ", new Rebelde(Color.BLACK), " ", " ", " ", " ", " ", " ", " "},
+        {new Rebelde(Color.BLACK), " ", " ", " ", " ", new Rebelde(Color.BLACK), " ", " ", " ", " ", " ", " ", " ", new Rebelde(Color.BLACK), " ", " ", " ", " ", new Rebelde(Color.BLACK)},
+        {new Castillo(Color.GRAY), new Castillo(Color.GRAY), " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", new Castillo(Color.GRAY), new Castillo(Color.GRAY)},
+        {new Castillo(Color.GRAY), new Castillo(Color.GRAY), new Rebelde(Color.BLACK), " ", " ", new Rebelde(Color.BLACK), " ", " ", " ", " ", " ", " ", " ", new Rebelde(Color.BLACK), " ", " ", new Rebelde(Color.BLACK), new Castillo(Color.GRAY), new Castillo(Color.GRAY)}};
         return matriz;
     }
 

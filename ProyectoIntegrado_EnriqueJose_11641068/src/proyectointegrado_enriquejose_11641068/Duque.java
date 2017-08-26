@@ -35,7 +35,6 @@ public class Duque extends Pieza {
                     System.out.println("Movimiento no permitido por las Reglas del Juego");
                     return false;
                 }
-
             }
             if (x1 > x) {
                 for (int i = 1; i <= x1 - x; i++) {
