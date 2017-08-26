@@ -120,6 +120,8 @@ public class ProyectoIntegrado_EnriqueJose_11641068 {
                         pieza = (Pieza) matrix[x][y];
                         if (pieza.movimientos(matrix, x, y, x2, y2)) {
                             if (matrix[x2][y2] instanceof Castillo) {
+                                System.out.println("El Rey llego al castillo");
+                                System.out.println("Ganoron los Reyes y Duques");
                                 ayuda = 1;
                                 
                             }

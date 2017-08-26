@@ -86,7 +86,13 @@ public class Duque extends Pieza {
             } else if (matriz[x][y] instanceof Rebelde && matriz[x][y + 1] instanceof Rebelde && matriz[x + 1][y] instanceof Rebelde) {
                 return true;
             }
+            if (matriz[x+1][y-1] instanceof Rey || matriz[x][y+1] instanceof Rey || matriz[x+1][y+1] instanceof Rey ||
+                    matriz[x-1][y] instanceof Rey || matriz[x+1][y] instanceof Rey || matriz[x-1][y-1] instanceof Rey ||
+                    matriz[x][y-1] instanceof Rey || matriz[x+1][y+1] instanceof Rey) {
+                return false;
+            }
             return false;
+            
         }else{
             return false;
         }

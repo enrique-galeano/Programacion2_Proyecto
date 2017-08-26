@@ -56,26 +56,26 @@ public class Rey extends Pieza {
                 }
             }
             return true;
-        } else {
-            if (x == x1) {
-                for (int i = 1; i <= y1 - y; i++) {
-                    if (matriz[x][y + i] instanceof Pieza) {
+        } else if (x == x1) {
+            for (int i = 1; i <= y1 - y; i++) {
+                if (matriz[x][y + i] instanceof Pieza) {
+                    System.out.println("Movimiento no permitido por las Reglas del Juego");
+                    return false;
+                }
+            }
+            if (y1 < y) {
+                for (int i = 1; i <= y - y1; i++) {
+                    if (matriz[x][y - i] instanceof Pieza) {
                         System.out.println("Movimiento no permitido por las Reglas del Juego");
                         return false;
                     }
                 }
-                if (y1 < y) {
-                    for (int i = 1; i <= y - y1; i++) {
-                        if (matriz[x][y - i] instanceof Pieza) {
-                            System.out.println("Movimiento no permitido por las Reglas del Juego");
-                            return false;
-                        }
-                    }
-                }
             }
-
+            return true;
+        } else {
+            System.out.println("Movimiento invalido no es permitodo mover en diagonal");
+            return false;
         }
-        return true;
     }
 
     @Override
@@ -86,27 +86,27 @@ public class Rey extends Pieza {
             }
         }
         if ((y == matriz.length - 1) && (x > 0)) {
-            if ((matriz[x-1][y] instanceof Rebelde) && (matriz[x][y - 1] instanceof Rebelde) && (matriz[x + 1][y] instanceof Rebelde)) {
+            if ((matriz[x - 1][y] instanceof Rebelde) && (matriz[x][y - 1] instanceof Rebelde) && (matriz[x + 1][y] instanceof Rebelde)) {
                 return true;
             }
-            
+
         }
         if ((x == 0) && (y > 0)) {
-            if ((matriz[x+1][y] instanceof Rebelde) && (matriz[x][y - 1] instanceof Rebelde) && (matriz[x][y +1 ] instanceof Rebelde)) {
+            if ((matriz[x + 1][y] instanceof Rebelde) && (matriz[x][y - 1] instanceof Rebelde) && (matriz[x][y + 1] instanceof Rebelde)) {
                 return true;
             }
         }
         if ((y == 0) && x > 0) {
-          if ((matriz[x+1][y] instanceof Rebelde) && (matriz[x - 1][y] instanceof Rebelde) && (matriz[x][y + 1] instanceof Rebelde)) {
+            if ((matriz[x + 1][y] instanceof Rebelde) && (matriz[x - 1][y] instanceof Rebelde) && (matriz[x][y + 1] instanceof Rebelde)) {
                 return true;
             }
         }
-        if ((x == matriz.length - 1 ) && y > 0 ) {
-             if ((matriz[x-1][y] instanceof Rebelde) && (matriz[x][y + 1] instanceof Rebelde) && (matriz[x][y-1] instanceof Rebelde)) {
+        if ((x == matriz.length - 1) && y > 0) {
+            if ((matriz[x - 1][y] instanceof Rebelde) && (matriz[x][y + 1] instanceof Rebelde) && (matriz[x][y - 1] instanceof Rebelde)) {
                 return true;
             }
         }
-        
+
         return false;
     }
 
