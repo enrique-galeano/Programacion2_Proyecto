@@ -13,8 +13,6 @@ public class ProyectoIntegrado_EnriqueJose_11641068 {
      * @param args the command line arguments
      */
     static Scanner sc = new Scanner(System.in);
-    static int duqs = 24;
-    static int rebel = 48;
 
     public static void main(String[] args) {
         int x = 0, cont = 0, ayuda = 0, y = 0, ayuda2 = 0;
@@ -22,7 +20,7 @@ public class ProyectoIntegrado_EnriqueJose_11641068 {
         int x2 = 0, y2 = 0;
         int x3 = 0, y3 = 0;
         Pieza pieza = new Pieza();
-        Object[][] matrix = new Object[6][3];
+        Object[][] matrix = new Object[19][19];
         matrix = Tablero();
         System.out.println("Bienvenido al Jugo de Mesa Alea Evangelii\n"
                 + "Reglas del juego\n"
@@ -63,7 +61,6 @@ public class ProyectoIntegrado_EnriqueJose_11641068 {
                         if (matrix[i][j] instanceof Duque) {
                             if (((Duque) matrix[i][j]).capturar(matrix, i, j)) {
                                 matrix[i][j] = " ";
-                                duqs--;
                             }
                         }
                     }
@@ -75,7 +72,6 @@ public class ProyectoIntegrado_EnriqueJose_11641068 {
                                 ayuda = 1;
                                 System.out.println("Ganaron los Rebeldes");
                                 matrix[i][j] = " ";
-                                //System.out.println("Ganaron los Rebeldes");
                             }
                         }
                     }
@@ -114,6 +110,7 @@ public class ProyectoIntegrado_EnriqueJose_11641068 {
                         System.out.println("Ingrese donde quiere mover en y ");
                         y2 = sc.nextInt();
                         pieza = (Pieza) matrix[x][y];
+
                         if (matrix[x2][y2] instanceof Castillo) {
                             System.out.println("El Rey llego al castillo");
                             System.out.println("Ganoron los Reyes y Duques");
@@ -123,21 +120,19 @@ public class ProyectoIntegrado_EnriqueJose_11641068 {
                             matrix[x][y] = " ";
 
                         }
+
                     }
                     for (int i = 0; i < matrix.length; i++) {
                         for (int j = 0; j < matrix[i].length; j++) {
-                            if (matrix[i][j] instanceof Rebelde) {
-                                if (((Rebelde) matrix[i][j]).capturar(matrix, i, j)) {
-                                    matrix[i][j] = " ";
-                                    rebel--;
+                            if (j == 0 && i < matrix.length-1) {
+                                if (matrix[i + 1][j] instanceof Rebelde) {
+                                    if (((Rebelde) matrix[i+1][j]).capturar(matrix, i+1, j)) {
+                                        matrix[i+1][j] = " ";
+
+                                    }
                                 }
                             }
                         }
-                    }
-                    System.out.println("Le quedan " + rebel + "de los 48 rebeldes");
-                    if (rebel == 0) {
-                        System.out.println("Gano el Rey y los duques");
-                        break;
                     }
                     cont++;
                 }
@@ -155,8 +150,8 @@ public class ProyectoIntegrado_EnriqueJose_11641068 {
         {" ", " ", " ", " ", new Rebelde(Color.BLACK), " ", " ", " ", " ", new Duque(Color.WHITE), " ", " ", " ", " ", new Rebelde(Color.BLACK), " ", " ", " ", " "},
         {" ", " ", " ", new Rebelde(Color.BLACK), " ", " ", " ", " ", new Duque(Color.WHITE), " ", new Duque(Color.WHITE), " ", " ", " ", " ", new Rebelde(Color.BLACK), " ", " ", " "},
         {" ", " ", " ", " ", new Duque(Color.WHITE), " ", " ", new Duque(Color.WHITE), " ", new Duque(Color.WHITE), " ", new Duque(Color.WHITE), " ", " ", new Duque(Color.WHITE), " ", " ", " ", " "},
-        {" ", " ", " ", new Rebelde(Color.BLACK), " ", " ", new Duque(Color.WHITE), " ", new Duque(Color.WHITE), /**new Rey(Color.BLUE)*/" " , new Duque(Color.WHITE), " ", new Duque(Color.WHITE), " ", " ", new Rebelde(Color.BLACK), " ", " ", " "},//Centro
-        {" "," ", " ", " ", new Duque(Color.WHITE), " ", " ", new Duque(Color.WHITE), " ", new Duque(Color.WHITE), " ", new Duque(Color.WHITE), " ", " ", new Duque(Color.WHITE), " ", " ", " ", " "},
+        {" ", " ", " ", new Rebelde(Color.BLACK), " ", " ", new Duque(Color.WHITE), " ", new Duque(Color.WHITE), new Rey(Color.BLUE), new Duque(Color.WHITE), " ", new Duque(Color.WHITE), " ", " ", new Rebelde(Color.BLACK), " ", " ", " "},//Centro
+        {" ", " ", " ", " ", new Duque(Color.WHITE), " ", " ", new Duque(Color.WHITE), " ", new Duque(Color.WHITE), " ", new Duque(Color.WHITE), " ", " ", new Duque(Color.WHITE), " ", " ", " ", " "},
         {" ", " ", " ", new Rebelde(Color.BLACK), " ", " ", " ", " ", new Duque(Color.WHITE), " ", new Duque(Color.WHITE), " ", " ", " ", " ", new Rebelde(Color.BLACK), " ", " ", " "},
         {" ", " ", " ", " ", new Rebelde(Color.BLACK), " ", " ", " ", " ", new Duque(Color.WHITE), " ", " ", " ", " ", new Rebelde(Color.BLACK), " ", " ", " ", " "},
         {new Rebelde(Color.BLACK), " ", new Rebelde(Color.BLACK), " ", " ", new Rebelde(Color.BLACK), " ", " ", " ", " ", " ", " ", " ", new Rebelde(Color.BLACK), " ", " ", new Rebelde(Color.BLACK), " ", new Rebelde(Color.BLACK)},

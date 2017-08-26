@@ -77,26 +77,38 @@ public class Duque extends Pieza {
 
     @Override
     public boolean capturar(Object[][] matriz, int x, int y) {
-        if (x >= 0 && y >= 0 && x < matriz.length - 1 && y < matriz.length - 1) {
+        if (x > 0 && y > 0 && x < matriz.length - 1 && y < matriz.length - 1) {
             if (matriz[x][y + 1] instanceof Rebelde && matriz[x][y - 1] instanceof Rebelde) {
                 return true;
             } else if (matriz[x][y - 1] instanceof Rebelde && matriz[x][y + 1] instanceof Rebelde && matriz[x + 1][y] instanceof Rebelde) {
                 return true;
             } else if (matriz[x][y] instanceof Rebelde && matriz[x][y + 1] instanceof Rebelde && matriz[x + 1][y] instanceof Rebelde) {
                 return true;
-            }
-            if (matriz[x+1][y-1] instanceof Rey || matriz[x][y+1] instanceof Rey || matriz[x+1][y+1] instanceof Rey ||
-                    matriz[x-1][y] instanceof Rey || matriz[x+1][y] instanceof Rey || matriz[x-1][y-1] instanceof Rey ||
-                    matriz[x][y-1] instanceof Rey || matriz[x+1][y+1] instanceof Rey) {
+            } else if (matriz[x + 1][y] instanceof Rebelde && matriz[x - 1][y] instanceof Rebelde) {
+                return true;
+            } else if (matriz[x + 1][y - 1] instanceof Rey
+                    || matriz[x][y + 1] instanceof Rey || matriz[x + 1][y + 1] instanceof Rey
+                    || matriz[x - 1][y] instanceof Rey || matriz[x + 1][y] instanceof Rey
+                    || matriz[x - 1][y - 1] instanceof Rey
+                    || matriz[x][y - 1] instanceof Rey || matriz[x + 1][y + 1] instanceof Rey) {
                 System.out.println("Son imunes los duques alrededor de el rey");
                 return false;
-                
             }
-            return false;
-            
-        }else{
-            return false;
+        } else if ((x == 0) && (y > 0) && (y < matriz.length - 1)) {
+            if (matriz[x][y + 1] instanceof Rebelde && matriz[x][y - 1] instanceof Rebelde) {
+                return true;
+            }
+        } else if (y == matriz.length - 1 && x > 0 && x < matriz.length - 1) {
+            if (matriz[x + 1][y] instanceof Rebelde && matriz[x - 1][y] instanceof Rebelde) {
+                return true;
+            }
+        } else if (y == 0 && x > 0 && x < matriz.length - 1) {
+            if (matriz[x + 1][y] instanceof Rebelde && matriz[x - 1][y] instanceof Rebelde) {
+                return true;
+            }
+
         }
+        return false;
     }
 
     @Override
