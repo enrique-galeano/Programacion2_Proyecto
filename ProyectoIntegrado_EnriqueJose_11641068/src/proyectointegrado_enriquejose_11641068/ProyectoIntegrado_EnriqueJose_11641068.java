@@ -85,16 +85,16 @@ public class ProyectoIntegrado_EnriqueJose_11641068 {
                 System.out.println(" ");
                 String nombre;
                 System.out.println("Jugador 2 " + jugador2 + "tu estas con el Rey y los duques  ");
-                System.out.println("Ingrese la coordenada de x: ");
+                System.out.println("Ingrese la coordenada de ");
                 x = sc.nextInt();
-                System.out.println("Ingrese la coordenada de y: ");
+                System.out.println("Ingrese la coordenada de  ");
                 y = sc.nextInt();
                 if (matrix[x][y] instanceof Pieza) {
                     if (matrix[x][y] instanceof Duque) {
                         System.out.println("Usted movera un Duque");
-                        System.out.println("Ingrese donde quiere mover en x ");
+                        System.out.println("Ingrese donde quiere mover en ");
                         x2 = sc.nextInt();
-                        System.out.println("Ingrese donde quiere mover en y ");
+                        System.out.println("Ingrese donde quiere mover en  ");
                         y2 = sc.nextInt();
                         pieza = (Pieza) matrix[x][y];
                         if (pieza.movimientos(matrix, x, y, x2, y2)) {
@@ -116,26 +116,29 @@ public class ProyectoIntegrado_EnriqueJose_11641068 {
                             System.out.println("Ganoron los Reyes y Duques");
                             ayuda = 1;
                         } else if (pieza.movimientos(matrix, x, y, x2, y2)) {
+
                             matrix[x2][y2] = matrix[x][y];
                             matrix[x][y] = " ";
-
+                            if (x == 9 && y == 9) {
+                                matrix[x][y] = new Castillo(Color.GRAY);
+                            }
                         }
 
                     }
                     for (int i = 0; i < matrix.length; i++) {
                         for (int j = 0; j < matrix[i].length; j++) {
-                            if (j == 0 && i < matrix.length-1) {
+                            if (j == 0 && i < matrix.length - 1) {
                                 if (matrix[i + 1][j] instanceof Rebelde) {
-                                    if (((Rebelde) matrix[i+1][j]).capturar(matrix, i+1, j)) {
-                                        matrix[i+1][j] = " ";
+                                    if (((Rebelde) matrix[i + 1][j]).capturar(matrix, i + 1, j)) {
+                                        matrix[i + 1][j] = " ";
 
                                     }
                                 }
                             }
                         }
                     }
-                    cont++;
                 }
+                cont++;
             }
         }
     }

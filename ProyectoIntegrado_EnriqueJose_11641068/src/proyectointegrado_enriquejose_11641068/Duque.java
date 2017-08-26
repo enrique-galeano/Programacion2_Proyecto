@@ -91,7 +91,6 @@ public class Duque extends Pieza {
                     || matriz[x - 1][y] instanceof Rey || matriz[x + 1][y] instanceof Rey
                     || matriz[x - 1][y - 1] instanceof Rey
                     || matriz[x][y - 1] instanceof Rey || matriz[x + 1][y + 1] instanceof Rey) {
-                System.out.println("Son imunes los duques alrededor de el rey");
                 return false;
             }
         } else if ((x == 0) && (y > 0) && (y < matriz.length - 1)) {
