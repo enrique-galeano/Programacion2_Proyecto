@@ -106,6 +106,10 @@ public class Duque extends Pieza {
                 return true;
             }
 
+        } else if ((x == matriz.length - 1) && (y > 0) && (y < matriz.length - 1)) {
+            if (matriz[x][y - 1] instanceof Rebelde && matriz[x][y + 1] instanceof Rebelde) {
+                return true;
+            }
         }
         return false;
     }

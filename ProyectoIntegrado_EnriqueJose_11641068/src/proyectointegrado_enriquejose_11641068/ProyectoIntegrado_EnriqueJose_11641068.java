@@ -57,7 +57,7 @@ public class ProyectoIntegrado_EnriqueJose_11641068 {
                     }
                 }
                 for (int i = 0; i < matrix.length; i++) {
-                    for (int j = 0; j < matrix[i].length; j++) {
+                    for (int j = 0; j < matrix[0].length; j++) {
                         if (matrix[i][j] instanceof Duque) {
                             if (((Duque) matrix[i][j]).capturar(matrix, i, j)) {
                                 matrix[i][j] = " ";
@@ -126,13 +126,11 @@ public class ProyectoIntegrado_EnriqueJose_11641068 {
 
                     }
                     for (int i = 0; i < matrix.length; i++) {
-                        for (int j = 0; j < matrix[i].length; j++) {
-                            if (j == 0 && i < matrix.length - 1) {
-                                if (matrix[i + 1][j] instanceof Rebelde) {
-                                    if (((Rebelde) matrix[i + 1][j]).capturar(matrix, i + 1, j)) {
-                                        matrix[i + 1][j] = " ";
+                        for (int j = 0; j < matrix[0].length; j++) {
+                            if (matrix[i][j] instanceof Rebelde) {
+                                if (((Rebelde) matrix[i][j]).capturar(matrix, i, j)) {
+                                    matrix[i][j] = " ";
 
-                                    }
                                 }
                             }
                         }
