@@ -86,8 +86,8 @@ public class Rebelde extends Pieza {
                 return true;
             } else if (matriz[x][y] instanceof Duque && matriz[x][y + 1] instanceof Duque && matriz[x + 1][y] instanceof Duque) {
                 return true;
-            } else if (matriz[x][y] instanceof Duque && matriz[x][y + 1] instanceof Duque && matriz[x + 1][y] instanceof Duque) {
-                return true;
+            //}else if(){
+                
             }
             return false;
         }else{

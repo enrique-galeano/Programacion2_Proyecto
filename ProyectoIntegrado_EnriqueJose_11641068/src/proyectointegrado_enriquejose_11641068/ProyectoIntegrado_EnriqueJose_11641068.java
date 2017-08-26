@@ -37,7 +37,7 @@ public class ProyectoIntegrado_EnriqueJose_11641068 {
             System.out.println("   0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18");
             imprimirmatriz(matrix, 0, 0);
             System.out.println("  ");
-            if (cont % 2 == 0) {
+            if (cont % 2 == 0 && ayuda != 1) {
                 System.out.println(" ");
                 System.out.println("Jugador 1 " + jugador1 + " tu estas con los rebeldes");
                 System.out.println("Ingrese la coordenada de ");
@@ -83,7 +83,7 @@ public class ProyectoIntegrado_EnriqueJose_11641068 {
                 cont++;
             }
             System.out.println(" ");
-            if (cont % 2 != 0) {
+            if (cont % 2 != 0 && ayuda != 1) {
                 System.out.println("   0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18");
                 imprimirmatriz(matrix, 0, 0);
                 System.out.println(" ");
@@ -155,7 +155,7 @@ public class ProyectoIntegrado_EnriqueJose_11641068 {
         {" ", " ", " ", " ", new Rebelde(Color.BLACK), " ", " ", " ", " ", new Duque(Color.WHITE), " ", " ", " ", " ", new Rebelde(Color.BLACK), " ", " ", " ", " "},
         {" ", " ", " ", new Rebelde(Color.BLACK), " ", " ", " ", " ", new Duque(Color.WHITE), " ", new Duque(Color.WHITE), " ", " ", " ", " ", new Rebelde(Color.BLACK), " ", " ", " "},
         {" ", " ", " ", " ", new Duque(Color.WHITE), " ", " ", new Duque(Color.WHITE), " ", new Duque(Color.WHITE), " ", new Duque(Color.WHITE), " ", " ", new Duque(Color.WHITE), " ", " ", " ", " "},
-        {" ", " ", " ", new Rebelde(Color.BLACK), " ", " ", new Duque(Color.WHITE), " ", new Duque(Color.WHITE), new Rey(Color.BLUE) , new Duque(Color.WHITE), " ", new Duque(Color.WHITE), " ", " ", new Rebelde(Color.BLACK), " ", " ", " "},//Centro
+        {" ", " ", " ", new Rebelde(Color.BLACK), " ", " ", new Duque(Color.WHITE), " ", new Duque(Color.WHITE), /**new Rey(Color.BLUE)*/" " , new Duque(Color.WHITE), " ", new Duque(Color.WHITE), " ", " ", new Rebelde(Color.BLACK), " ", " ", " "},//Centro
         {" "," ", " ", " ", new Duque(Color.WHITE), " ", " ", new Duque(Color.WHITE), " ", new Duque(Color.WHITE), " ", new Duque(Color.WHITE), " ", " ", new Duque(Color.WHITE), " ", " ", " ", " "},
         {" ", " ", " ", new Rebelde(Color.BLACK), " ", " ", " ", " ", new Duque(Color.WHITE), " ", new Duque(Color.WHITE), " ", " ", " ", " ", new Rebelde(Color.BLACK), " ", " ", " "},
         {" ", " ", " ", " ", new Rebelde(Color.BLACK), " ", " ", " ", " ", new Duque(Color.WHITE), " ", " ", " ", " ", new Rebelde(Color.BLACK), " ", " ", " ", " "},
