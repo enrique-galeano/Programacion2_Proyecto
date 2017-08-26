@@ -119,8 +119,13 @@ public class ProyectoIntegrado_EnriqueJose_11641068 {
                         y2 = sc.nextInt();
                         pieza = (Pieza) matrix[x][y];
                         if (pieza.movimientos(matrix, x, y, x2, y2)) {
+                            if (matrix[x2][y2] instanceof Castillo) {
+                                ayuda = 1;
+                                
+                            }
                             matrix[x2][y2] = matrix[x][y];
                             matrix[x][y] = " ";
+                            
                         }
                     }
                     for (int i = 0; i < matrix.length; i++) {
